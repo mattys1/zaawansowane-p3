@@ -17,7 +17,7 @@ private:
 		auto sortedRight = mergeSort(right);
 	}
 
-	void merge(std::vector<T>& left, std::vector<T>& right) {
+	std::vector<T> merge(std::vector<T>& left, std::vector<T>& right) {
 		std::vector<T> merged;
 		auto leftIt { left.begin() }, rightIt { right.begin() };
 
@@ -41,6 +41,6 @@ private:
 
 public:
 	void operator() (std::vector<T>& toSort) {
-		
+		mergeSort(toSort);	
 	}
 };
