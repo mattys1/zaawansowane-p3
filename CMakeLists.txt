@@ -10,3 +10,4 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/out)
 
 add_subdirectory(src)
+add_subdirectory(tests)
