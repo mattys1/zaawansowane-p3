@@ -16,9 +16,29 @@ private:
 		auto sortedLeft = mergeSort(left);
 		auto sortedRight = mergeSort(right);
 	}
+
 	void merge(std::vector<T>& left, std::vector<T>& right) {
+		std::vector<T> merged;
+		auto leftIt { left.begin() }, rightIt { right.begin() };
+
+		for (; leftIt != left.end() && rightIt != right.end();) {
+			if(*leftIt < *rightIt) {
+				merged.push_back(*left);
+				leftIt++;
+			} else {
+				merged.push_back(*right);
+				rightIt++;
+			}
 		}
+
+		merged.push_back(
+			std::span { leftIt, left.end() },
+			std::span { rightIt, right.end() }
+		);
+
+		return merged;
 	}
+
 public:
 	void operator() (std::vector<T>& toSort) {
 		
