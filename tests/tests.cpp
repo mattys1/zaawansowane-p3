@@ -43,3 +43,11 @@ TEST(ImportantTests, SortStability) {
 
 	EXPECT_EQ(stabTest, sortedStabTest);
 }
+
+TEST(ImportantTests, SortReverse) {
+	MergeSorter<int> sorter;	
+	std::vector test { 5,4,3,2,1 };
+	sorter(test);
+
+	EXPECT_EQ(test, (std::vector { 1,2,3,4,5 }));
+}
