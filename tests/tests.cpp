@@ -1,9 +1,10 @@
 #include <gtest/gtest.h>
+#include "MergeSorter.hpp"
 
-// Demonstrate some basic assertions.
-TEST(HelloTest, BasicAssertions) {
-  // Expect two strings not to be equal.
-  EXPECT_STRNE("hello", "world");
-  // Expect equality.
-  EXPECT_EQ(7 * 6, 42);
+TEST(ImportantTests, MergeSorter) {
+	MergeSorter<int> sorter;	
+	std::vector test { 5,2,4,3,1 };
+	sorter(test);
+
+	EXPECT_EQ(test, (std::vector { 1,2,3,4,5 }));
 }
