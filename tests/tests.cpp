@@ -23,8 +23,8 @@ TEST(ImportantTests, SortStability) {
 		} 
 
 		bool operator==(const StabilityTest& other) const {
-			return operator<=>(other) == std::strong_ordering::equivalent;
-		}
+			return this->id == other.id && this->name == other.name;
+		};
 	};
 
 	std::vector stabTest { 

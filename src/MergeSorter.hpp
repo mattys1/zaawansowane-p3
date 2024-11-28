@@ -23,7 +23,7 @@ private:
 		auto leftIt { left.begin() }, rightIt { right.begin() };
 
 		for (; leftIt != left.end() && rightIt != right.end();) {
-			if(*leftIt < *rightIt) {
+			if(*leftIt <= *rightIt) {
 				merged.push_back(*leftIt);
 				leftIt++;
 			} else {
