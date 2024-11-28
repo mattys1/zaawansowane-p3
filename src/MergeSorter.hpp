@@ -12,11 +12,6 @@ private:
 		auto left = toMerge | std::views::take(toMerge.size() / 2) | std::ranges::to<std::vector>();
 		auto right = toMerge | std::views::drop(toMerge.size() / 2) | std::ranges::to<std::vector>();
 
-		/* auto& [left, right] =  std::pair { */
-		/* 	toMerge | std::views::take(toMerge.size() / 2), */
-		/* 	toMerge | std::views::drop(toMerge.size() / 2) */
-		/* }; */
-
 		auto sortedLeft = mergeSort(left);
 		auto sortedRight = mergeSort(right);
 
@@ -44,7 +39,7 @@ private:
 	}
 
 public:
-	void operator()(const std::vector<T>& toSort) {
-		mergeSort(toSort);	
+	void operator()(std::vector<T>& toSort) {
+		toSort = mergeSort(toSort);	
 	}
 };
