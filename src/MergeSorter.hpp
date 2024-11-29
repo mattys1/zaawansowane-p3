@@ -1,6 +1,9 @@
 #include <ranges>
 #include <vector>
 
+///@brief The class inside this template is responsible for sorting vectors using the merge sort algorithm
+///
+/// The sorting functionality can be accessed with `operator()()`
 template<typename T>
 class MergeSorter {
 private: 
@@ -39,6 +42,9 @@ private:
 	}
 
 public:
+	/// @brief Will sort any vector inserted into the function using the merge sort algorithm. This operation happens recursively and IS NOT in place
+	///
+	/// @param toSort The vector that is to be sorted
 	void operator()(std::vector<T>& toSort) {
 		if(toSort.size() <= 1) {
 			return;
