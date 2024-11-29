@@ -126,3 +126,11 @@ TEST(ImportantTests, NegDuplicateSort) {
 
   EXPECT_EQ(test, (std::vector{-5, -5, -4,-4, -3,-3, -2,-2, -1,-1}));
 }
+
+TEST(ImportantTests, NegAndPosDuplicateSort) {
+  MergeSorter<int> sorter;
+  std::vector test{-5,-5, 2,2, -4,-4, 3,3, -1, -1};
+  sorter(test);
+
+  EXPECT_EQ(test, (std::vector{-5, -5, -4,-4, -1,-1, 2,2, 3,3}));
+}
