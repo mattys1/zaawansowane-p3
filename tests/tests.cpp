@@ -99,3 +99,14 @@ TEST(ImportantTests, SortEmpty) {
 
 	EXPECT_EQ(empty, std::vector<int>());
 }
+
+TEST(ImportantTests, OneElemStability) {
+	MergeSorter<int> sorter;	
+
+	std::vector<int> elem {1};
+	auto beforeSortAddress = &elem[0];
+
+	sorter(elem);
+
+	EXPECT_EQ(beforeSortAddress, &elem[0]);
+}
