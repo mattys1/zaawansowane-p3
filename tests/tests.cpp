@@ -143,3 +143,20 @@ TEST(ImportantTests, OnlyTwoElemsSort) {
   EXPECT_EQ(test, (std::vector{1,2}));
 }
 
+TEST(ImportantTests, SortRandomBig) {
+	std::default_random_engine generator;
+	std::uniform_int_distribution distribution(0, 255);
+
+	MergeSorter<int> sorter;	
+
+	std::vector<int> randomInts(100);
+	std::generate(randomInts.begin(), randomInts.end(), [&]() {
+		return distribution(generator);
+	});
+
+	auto sorted = randomInts;
+	std::sort(sorted.begin(), sorted.end());
+	sorter(randomInts);
+
+	EXPECT_EQ(sorted, randomInts);
+}
