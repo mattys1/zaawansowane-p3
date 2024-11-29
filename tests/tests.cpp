@@ -134,3 +134,12 @@ TEST(ImportantTests, NegAndPosDuplicateSort) {
 
   EXPECT_EQ(test, (std::vector{-5, -5, -4,-4, -1,-1, 2,2, 3,3}));
 }
+
+TEST(ImportantTests, OnlyTwoElemsSort) {
+  MergeSorter<int> sorter;
+  std::vector test{1,2};
+  sorter(test);
+
+  EXPECT_EQ(test, (std::vector{1,2}));
+}
+
