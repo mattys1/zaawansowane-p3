@@ -161,7 +161,7 @@ TEST(ImportantTests, SortRandomBig) {
 	EXPECT_EQ(sorted, randomInts);
 }
 
-TEST(ImportantTests, SortRandomBigNeg) {
+TEST(ImportantTests, SortRandomBigNegAndDupes) {
 	std::default_random_engine generator;
 	std::uniform_int_distribution distribution(-255, 255);
 
@@ -171,6 +171,8 @@ TEST(ImportantTests, SortRandomBigNeg) {
 	std::generate(randomInts.begin(), randomInts.end(), [&]() {
 		return distribution(generator);
 	});
+
+	randomInts.insert(randomInts.end(), randomInts.begin(), randomInts.end());
 
 	auto sorted = randomInts;
 	std::sort(sorted.begin(), sorted.end());
