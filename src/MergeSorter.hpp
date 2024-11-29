@@ -40,6 +40,10 @@ private:
 
 public:
 	void operator()(std::vector<T>& toSort) {
+		if(toSort.size() <= 1) {
+			return;
+		}
+
 		toSort = mergeSort(toSort);	
 	}
 };
