@@ -80,3 +80,13 @@ TEST(ImportantTests, SortNeg) {
 
 	EXPECT_EQ(numbers, (std::vector {-5, -4, -3, -2, -1}));
 }
+
+
+TEST(ImportantTests, SortNegAndPos) {
+	MergeSorter<int> sorter;	
+
+	std::vector numbers {-5, 3, -4, 2, -1};
+	sorter(numbers);
+
+	EXPECT_EQ(numbers, (std::vector {-5, -4, -1, 2, 3}));
+}
