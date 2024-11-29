@@ -1,12 +1,14 @@
+#include <algorithm>
 #include <gtest/gtest.h>
+#include <random>
 #include "MergeSorter.hpp"
 
 TEST(ImportantTests, SortNormal) {
-	MergeSorter<int> sorter;	
-	std::vector test { 5,2,4,3,1 };
-	sorter(test);
+  MergeSorter<int> sorter;
+  std::vector test{5, 2, 4, 3, 1};
+  sorter(test);
 
-	EXPECT_EQ(test, (std::vector { 1,2,3,4,5 }));
+  EXPECT_EQ(test, (std::vector{1, 2, 3, 4, 5}));
 }
 
 TEST(ImportantTests, SortStability) {
@@ -50,4 +52,22 @@ TEST(ImportantTests, SortReverse) {
 	sorter(test);
 
 	EXPECT_EQ(test, (std::vector { 1,2,3,4,5 }));
+}
+
+TEST(ImportantTests, SortRandom) {
+	std::default_random_engine generator;
+	std::uniform_int_distribution distribution(0, 255);
+
+	MergeSorter<int> sorter;	
+
+	std::vector<int> randomInts(10);
+	std::generate(randomInts.begin(), randomInts.end(), [&]() {
+		return distribution(generator);
+	});
+
+	auto sorted = randomInts;
+	std::sort(sorted.begin(), sorted.end());
+	sorter(randomInts);
+
+	EXPECT_EQ(sorted, randomInts);
 }
